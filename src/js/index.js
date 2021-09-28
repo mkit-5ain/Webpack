@@ -1,6 +1,6 @@
 // index.js
-// import '../css/base.css';
-// import '../css/style.scss';
+import '../css/base.css';
+import '../css/style.scss';
 console.log('Webpack 번들링 실행');
 
 // require 는 NodeJS 에서 사용되고 있는 CommonJS 키워드이고,

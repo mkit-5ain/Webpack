@@ -47,6 +47,6 @@ module.exports = {
     },
     plugins: [
         // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-        new MiniCssExtractPlugin({ filename: './src/css/style.css' })
+        new MiniCssExtractPlugin({ filename: '/css/style.css' })
     ]
 };

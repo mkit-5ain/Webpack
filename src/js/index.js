@@ -1,6 +1,11 @@
 // index.js
 import '../css/common.css';
-console.log('Webpack 번들링 실행');
+import moment from 'moment';
+const ele = document.querySelector('.main-moment');
+
+document.addEventListener('DOMContentLoaded', function(event) {
+    ele.innerText = moment().format();
+});
 
 // require 는 NodeJS 에서 사용되고 있는 CommonJS 키워드이고,
 // import 는 ES6(ES2015)에서 새롭게 도입된 키워드로

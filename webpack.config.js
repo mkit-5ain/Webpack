@@ -7,16 +7,14 @@ const webpack = require( 'webpack' );
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // node_modules 에서 불러옴
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // html-webpack-plugin 불러옴
 
-
-
 module.exports = {
     // 웹팩 v4부터는 mode 필수
     // mode 는 production, development, none 3가지 옵션이 존재
     // mode 의 production 은 각 설정마다 내장된 최적화 옵션을 자동으로 설정하여 준다
     mode : 'development',
     entry: {
-        'js/junesu' : './src/js/index.js',
-        'js/module' : ['./src/js/module1.js', './src/js/module2.js']  // 배열 사용(오른쪽부터 왼쪽으로 읽어감) }
+        'js/index' : ['./src/js/index.js', './src/sass/pages.scss'],
+        'js/module' : ['./src/js/module1.js', './src/js/module2.js'],  // 배열 사용(오른쪽부터 왼쪽으로 읽어감) }
         // vendor: ['lodash', 'jquery'], // webpack v4 이전 방식
     },
     output: {
@@ -25,8 +23,8 @@ module.exports = {
          // __이 붙어 있는 변수들은 항상 무엇인가를 담고있는 특별한 변수들임
          // path 에는 절대 경로 설정(절대값으로 static(정적)으로 사용)
          // filename: 'dist/[name].js',
-         path : path.resolve(__dirname, 'dist'),
-         filename : '[name].js', // 위에 지정한 entry 키의 이름에 맵핑되어 파일이 생성됨
+         path: path.resolve(__dirname, 'dist'),
+         filename: '[name].js', // 위에 지정한 entry 키의 이름에 맵핑되어 파일이 생성됨
          // chunkFilename : '[name].js' // webpack v4 이전 방식
     },
      // 로더를 지정하기 위한 module 정의
@@ -36,12 +34,28 @@ module.exports = {
             {
                 // test : 변환 할 파일을 지정
                 // 정규 표현식으로 문자열 .css 확장자로 끝나는 것을 찾음.
-                test: /\.css$/,
+                test: '/\.scss$/',///\.css$/,
                 // use : 해당 파일에 적용할 로더의 이름
                 // 로더에서 모듈 로딩 순서는 배열의 요소 오른쪽에서 왼쪽으로 로딩하며 진행
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // publicPath 는 Webpack 이 번들을 (선택적으로)로드 할 곳입니다.
+                            // entry 가 현재 'js/index' 로 js 폴더 내에 생성하지 않고 상위폴더로 빼내기 위함
+                            publicPath: '../'
+                        }
+                    },
+                    // sass-loader : 기본적으로 node-sass 를 사용하여 sass 를 css 로 컴파일하는 역할
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            outputStyle: 'expanded',
+                            indentType: 'tab', // 정의되어 있지 않으면 기본값은 space
+                            indentWidth: 1 // 기본값 2
+                        }
+                    }
                 ],
                 // exclude 는 제외할 폴더나 파일
                 // 다른 모듈을 사용해서 컴파일하지 않도록 지정(안전성 확보)
@@ -51,9 +65,6 @@ module.exports = {
     },
     plugins: [
         // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-        new MiniCssExtractPlugin({
-            filename: '/css/style.css'
-        }),
 
         new HtmlWebpackPlugin({
             template: 'index.html',

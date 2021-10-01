@@ -1,5 +1,6 @@
 // index.js
 // import '../css/common.css';
+// import '../sass/pages.scss';
 const ele = document.querySelector('.main-moment');
 
 document.addEventListener('DOMContentLoaded', function(event) {

@@ -3,6 +3,7 @@
 // entry = 번들을 설정하기 위한 진입점을 의미
 
 const path = require( 'path' ); // 경로를 설정
+const webpack = require( 'webpack' );
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // node_modules 에서 불러옴
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // html-webpack-plugin 불러옴
 
@@ -14,8 +15,8 @@ module.exports = {
     // mode 의 production 은 각 설정마다 내장된 최적화 옵션을 자동으로 설정하여 준다
     mode : 'development',
     entry: {
-        junesu : './src/js/index.js',
-        'module' : ['./src/js/module1.js', './src/js/module2.js']  // 배열 사용(오른쪽부터 왼쪽으로 읽어감) }
+        'js/junesu' : './src/js/index.js',
+        'js/module' : ['./src/js/module1.js', './src/js/module2.js']  // 배열 사용(오른쪽부터 왼쪽으로 읽어감) }
         // vendor: ['lodash', 'jquery'], // webpack v4 이전 방식
     },
     output: {
@@ -57,6 +58,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html',
             filename: 'index.html'
+        }),
+        // 모든 라이브러리 불러옴
+        new webpack.ProvidePlugin({
+            // 라이브러리 코딩
+            $: 'jquery',
+            jQ: 'jquery',
+            moment: 'moment'
         })
     ],
     // optimization 로 중복된 모듈 없애기
@@ -74,7 +82,7 @@ module.exports = {
                     // 비동기 및 동기 모듈을 통한 최적화(test 조건에 포함되는 모든 것을 분리하겠다는 뜻)
                     chunks: 'all',
                     // 처크로 분리할 때 이름으로 사용될 파일명
-                    name: 'libs'
+                    name: 'js/vendor/libs'
                 }
             }
         }

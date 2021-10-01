@@ -1,5 +1,4 @@
-import $ from 'jquery';
 
 $(function () {
-    $('.module2').text('module-2.js 에서 jquery를 사용중입니다.');
+    $('.module2').text('module-02.js 에서 jQ로 치환하여 사용중입니다.');
 });

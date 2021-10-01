@@ -1,6 +1,5 @@
 // index.js
-import '../css/common.css';
-import moment from 'moment';
+// import '../css/common.css';
 const ele = document.querySelector('.main-moment');
 
 document.addEventListener('DOMContentLoaded', function(event) {
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 // 두 개의 키워드 모두 하나의 파일에서 다른 파일의 코드를 불러온다는 동일한 목적을 가지고 있음
 
 // jquery 를 불러와 & 치환 한다는 의미
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 (function () {
 

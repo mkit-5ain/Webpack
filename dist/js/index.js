@@ -19,23 +19,23 @@ eval("var map = {\n\t\"./af\": \"./node_modules/moment/locale/af.js\",\n\t\"./af
 
 /***/ }),
 
-/***/ "./src/js/module1.js":
-/*!***************************!*\
-  !*** ./src/js/module1.js ***!
-  \***************************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* provided dependency */ var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n\n$(function () {\n    $('.jQ').text('module01.js 에서 jquery 를 사용하고 있습니다!!!');\n});\n$('.module01').text(moment().format());\n\n\n//# sourceURL=webpack://environment/./src/js/module1.js?");
+eval("/* provided dependency */ var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n// index.js\r\n// import '../css/common.css';\r\n// import '../sass/pages.scss';\r\nconst ele = document.querySelector('.main-moment');\r\n\r\ndocument.addEventListener('DOMContentLoaded', function(event) {\r\n    ele.innerText = moment().format();\r\n});\r\n\r\n// require 는 NodeJS 에서 사용되고 있는 CommonJS 키워드이고,\r\n// import 는 ES6(ES2015)에서 새롭게 도입된 키워드로\r\n// 두 개의 키워드 모두 하나의 파일에서 다른 파일의 코드를 불러온다는 동일한 목적을 가지고 있음\r\n\r\n// jquery 를 불러와 & 치환 한다는 의미\r\n// import $ from 'jQuery';\r\n\r\n(function () {\r\n\r\n    $(document).ready(function () {\r\n        $('p').text('jQuery를 불러와 사용하고 있습니다.')\r\n    });\r\n\r\n})();\r\n\n\n//# sourceURL=webpack://environment/./src/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/js/module2.js":
-/*!***************************!*\
-  !*** ./src/js/module2.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ "./src/sass/pages.scss":
+/*!*****************************!*\
+  !*** ./src/sass/pages.scss ***!
+  \*****************************/
+/***/ (() => {
 
-eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\r\n$(function () {\r\n    $('.module2').text('module-02.js 에서 jQ로 치환하여 사용');\r\n});\r\n\n\n//# sourceURL=webpack://environment/./src/js/module2.js?");
+eval("\n\n//# sourceURL=webpack://environment/./src/sass/pages.scss?");
 
 /***/ })
 
@@ -126,7 +126,7 @@ eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./no
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"js/module": 0
+/******/ 			"js/index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -176,8 +176,8 @@ eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./no
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/js/module1.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/js/module2.js")))
+/******/ 	__webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/js/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/sass/pages.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

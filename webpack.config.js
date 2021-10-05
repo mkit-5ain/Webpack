@@ -4,8 +4,12 @@
 
 const path = require( 'path' ); // 경로를 설정
 const webpack = require( 'webpack' );
+const folderPath = path.resolve(__dirname, "./");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // node_modules 에서 불러옴
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // html-webpack-plugin 불러옴
+// let fs = require('fs');
+// const header = fs.readFileSync(__dirname + '/header.html');
+// const footer = fs.readFileSync(__dirname + '/footer.html');
 
 module.exports = {
     // 웹팩 v4부터는 mode 필수
@@ -67,7 +71,12 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+            inject: false,
+            hash: true,
+            // header: header,
+            // footer: footer,
+            HTML_PATH: folderPath,
         }),
 
         // 모든 라이브러리 불러옴

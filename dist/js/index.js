@@ -23,9 +23,10 @@ eval("var map = {\n\t\"./af\": \"./node_modules/moment/locale/af.js\",\n\t\"./af
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("/* provided dependency */ var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n// index.js\r\n// import '../css/common.css';\r\n// import '../sass/pages.scss';\r\nconst ele = document.querySelector('.main-moment');\r\n\r\ndocument.addEventListener('DOMContentLoaded', function(event) {\r\n    ele.innerText = moment().format();\r\n});\r\n\r\n// require 는 NodeJS 에서 사용되고 있는 CommonJS 키워드이고,\r\n// import 는 ES6(ES2015)에서 새롭게 도입된 키워드로\r\n// 두 개의 키워드 모두 하나의 파일에서 다른 파일의 코드를 불러온다는 동일한 목적을 가지고 있음\r\n\r\n// jquery 를 불러와 & 치환 한다는 의미\r\n// import $ from 'jQuery';\r\n\r\n(function () {\r\n\r\n    $(document).ready(function () {\r\n        $('p').text('jQuery를 불러와 사용하고 있습니다.')\r\n    });\r\n\r\n})();\r\n\n\n//# sourceURL=webpack://environment/./src/js/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sass_pages_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/pages.scss */ \"./src/sass/pages.scss\");\n/* harmony import */ var _sass_pages_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sass_pages_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* provided dependency */ var moment = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n// index.js\r\n// import '../css/common.css';\r\n\r\nconst ele = document.querySelector('.main-moment');\r\n\r\ndocument.addEventListener('DOMContentLoaded', function(event) {\r\n    ele.innerText = moment().format();\r\n});\r\n\r\n// require 는 NodeJS 에서 사용되고 있는 CommonJS 키워드이고,\r\n// import 는 ES6(ES2015)에서 새롭게 도입된 키워드로\r\n// 두 개의 키워드 모두 하나의 파일에서 다른 파일의 코드를 불러온다는 동일한 목적을 가지고 있음\r\n\r\n// jquery 를 불러와 & 치환 한다는 의미\r\n// import $ from 'jQuery';\r\n\r\n(function () {\r\n\r\n    $(document).ready(function () {\r\n        $('p').text('jQuery를 불러와 사용하고 있습니다.')\r\n    });\r\n\r\n})();\r\n\n\n//# sourceURL=webpack://environment/./src/js/index.js?");
 
 /***/ }),
 
@@ -104,9 +105,44 @@ eval("\n\n//# sourceURL=webpack://environment/./src/sass/pages.scss?");
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
@@ -176,8 +212,7 @@ eval("\n\n//# sourceURL=webpack://environment/./src/sass/pages.scss?");
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/js/index.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/sass/pages.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["js/vendor/libs"], () => (__webpack_require__("./src/js/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

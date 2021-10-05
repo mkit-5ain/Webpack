@@ -13,7 +13,7 @@ module.exports = {
     // mode 의 production 은 각 설정마다 내장된 최적화 옵션을 자동으로 설정하여 준다
     mode : 'development',
     entry: {
-        'js/index' : ['./src/js/index.js', './src/sass/pages.scss'],
+        'js/index' : ['./src/js/index.js'],
         'js/module' : ['./src/js/module1.js', './src/js/module2.js'],  // 배열 사용(오른쪽부터 왼쪽으로 읽어감) }
         // vendor: ['lodash', 'jquery'], // webpack v4 이전 방식
     },
@@ -41,13 +41,13 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            // publicPath 는 Webpack 이 번들을 (선택적으로)로드 할 곳입니다.
-                            // entry 가 현재 'js/index' 로 js 폴더 내에 생성하지 않고 상위폴더로 빼내기 위함
                             publicPath: '../'
                         }
                     },
+
                     // sass-loader : 기본적으로 node-sass 를 사용하여 sass 를 css 로 컴파일하는 역할
                     'css-loader',
+
                     {
                         loader: 'sass-loader',
                         options: {
@@ -64,18 +64,23 @@ module.exports = {
         ]
     },
     plugins: [
-        // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
 
         new HtmlWebpackPlugin({
             template: 'index.html',
             filename: 'index.html'
         }),
+
         // 모든 라이브러리 불러옴
         new webpack.ProvidePlugin({
             // 라이브러리 코딩
             $: 'jquery',
             jQ: 'jquery',
             moment: 'moment'
+        }),
+
+        // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
+        new MiniCssExtractPlugin({
+            filename: 'css/style.css'
         })
     ],
     // optimization 로 중복된 모듈 없애기
@@ -96,6 +101,11 @@ module.exports = {
                     name: 'js/vendor/libs'
                 }
             }
+        }
+    },
+    devServer: {
+        proxy: {
+            '/api': '175.113.117.233'
         }
     }
 };
